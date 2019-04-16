@@ -1,0 +1,620 @@
+<Schema name="AtendeTI - 2-Historico v.1.4" description="Cubo de Analises Historicas do OTRS V.1.6" measuresCaption="Medidas">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="UsuariosClientes" caption="Clientes">
+    <Hierarchy name="clientes" visible="true" hasAll="true" primaryKey="sk_customer">
+      <Table name="dim_customer">
+      </Table>
+      <Level name="customer_id" visible="true" column="login" nameColumn="login" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Login Cliente">
+      </Level>
+      <Level name="NomeUsuario" visible="true" column="nomeCompleto" nameColumn="nomeCompleto" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Nome do Cliente">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstadoChamado">
+    <Hierarchy name="estadoChamado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket_state">
+      </Table>
+      <Level name="Estado" visible="true" column="name" nameColumn="name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Estado Chamado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Servico">
+    <Hierarchy name="servico" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_service">
+      </Table>
+      <Level name="Servico" visible="true" column="name" nameColumn="name" ordinalColumn="name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Servico">
+      </Level>
+      <Level name="QuantidadeUSU" visible="true" column="comments" nameColumn="comments" ordinalColumn="comments" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Quantidade de USU">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fila" caption="Fila">
+    <Hierarchy name="fila" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_queue">
+      </Table>
+      <Level name="fila" visible="true" column="name" nameColumn="name" ordinalColumn="name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Fila">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Atendentes">
+    <Hierarchy name="atendentes" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_users">
+      </Table>
+      <Level name="login" visible="true" column="login" nameColumn="login" ordinalColumn="login" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Login Atendente">
+      </Level>
+      <Level name="NomeCompleto" visible="true" column="full_name" nameColumn="full_name" ordinalColumn="full_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Nome Atendente">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="TipoChamado">
+    <Hierarchy name="tipoChamado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket_type">
+      </Table>
+      <Level name="TipoChamado" visible="true" column="id" nameColumn="name" type="String" internalType="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" caption="Tipo de Chamado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="StatusChamadoEncerramento" caption="Status">
+    <Hierarchy name="StatusChamadoEncerrado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_status_chamado_encerrado">
+      </Table>
+      <Level name="StatusEncerramantoChamado" visible="true" column="status_ticket" nameColumn="status_ticket" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Status Encerramento Chamado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Severidade">
+    <Hierarchy name="Severidade" visible="true" hasAll="true" primaryKey="sk_severidade">
+      <Table name="dim_severidade">
+      </Table>
+      <Level name="severidade" visible="true" column="severidade" nameColumn="severidade" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Severidade">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="ArvoreCatalogoServico">
+    <Hierarchy name="ArvoreServico" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_service">
+      </Table>
+      <Level name="servico" visible="true" column="catalogo_servico" nameColumn="catalogo_servico" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Servi&#231;o">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="ArvoreGrupo" visible="true" hasAll="true" primaryKey="id" caption="Catalogo de Grupos">
+      <Table name="dim_service">
+      </Table>
+      <Level name="grupo" visible="true" column="catalogo_grupo" nameColumn="catalogo_grupo" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Grupo">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="ArvoreDisciplina" visible="true" hasAll="true" primaryKey="id" caption="Catalogo de Disciplina">
+      <Table name="dim_service">
+      </Table>
+      <Level name="disciplina" visible="true" column="catalogo_disciplina" nameColumn="catalogo_disciplina" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Disciplina">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="ArvoreNome" visible="true" hasAll="true" primaryKey="id" caption="Catalogo de Nome">
+      <Table name="dim_service">
+      </Table>
+      <Level name="nome" visible="true" column="catalogo_nome" nameColumn="catalogo_nome" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Nome">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="ArvoreDescricao" visible="true" hasAll="true" primaryKey="id" caption="Catalogo de Descri&#231;&#227;o">
+      <Table name="dim_service">
+      </Table>
+      <Level name="descricao" visible="true" column="catalogo_descricao" nameColumn="catalogo_descricao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Descri&#231;&#227;o">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Servico" visible="true" hasAll="true" primaryKey="id" caption="Catalogo Servico Completo">
+      <Table name="dim_service">
+      </Table>
+      <Level name="ServicoCompleto" visible="true" column="name" nameColumn="name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Catalogo Servico Completo">
+      </Level>
+      <Level name="QTDUSU" visible="true" column="comments" nameColumn="comments" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Quantidade USU">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Questoes">
+    <Hierarchy name="Questoes" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_survey_question">
+      </Table>
+      <Level name="Questoes" visible="true" column="question" nameColumn="question" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Questoes">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="RespostaPesquisa" caption="Resposta da Pesquisa">
+    <Hierarchy name="RespostaPesquisa" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_survey_answer">
+      </Table>
+      <Level name="respostaPesquisa" visible="true" column="answer" nameColumn="answer" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Respostas da Pesquisa">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="StatusChamadoClassificacao">
+    <Hierarchy name="StatusChamadoClassificacao" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_status_chamado_classificado">
+      </Table>
+      <Level name="StatusClassificacaoChamado" visible="true" column="status_ticket" nameColumn="status_ticket" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Status Classificacao Chamado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="InfoChamado">
+    <Hierarchy name="InformacoesChamado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="NumeroChamado" visible="true" column="tn" nameColumn="tn" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Numero Chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoTitulo" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="tituloChamado" visible="true" column="title" nameColumn="title" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Titulo Chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfodataCriacao" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="DataCriacao" visible="true" column="data_criacao" nameColumn="data_criacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data/Hora de Criacao">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoDataClassificacao" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="DataClassificacao" visible="true" column="data_classificacao" nameColumn="data_classificacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data/Hora de Classifica&#231;&#227;o">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoDataAguardandoValidacao" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="DataAguardandoValidacao" visible="true" column="data_aguardando_validacao" nameColumn="data_aguardando_validacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data/Hora de Aguardando Valida&#231;&#227;o">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoDataPrazoSLA" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="DataPrazoSLA" visible="true" column="prazo_do_SLA" nameColumn="prazo_do_SLA" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data/Hora do fim SLA">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfodataEncerrado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="dataEncerrado" visible="true" column="data_encerramento" nameColumn="data_encerramento" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data/Hora de Encerramento">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoTempoClassificacao" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="TempoClassificacao" visible="true" column="tempo_classificacao_inMin" nameColumn="tempo_classificacao_inMin" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tempo Classifica&#231;&#227;o (Min)">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoQtdReabertura" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="QtdReaberturaChamado" visible="true" column="qdt_reabertura" nameColumn="qdt_reabertura" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Qtd Reabertura">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoPesquisaRespondida" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="PesquisaRespondida" visible="true" column="pesquisa_respondida" nameColumn="pesquisa_respondida" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Pesquisa Respondida">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoPesquisaEnviada" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="PesquisaEnviada" visible="true" column="pesquisa_enviada" nameColumn="pesquisa_enviada" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Pesquisa Enviada">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoTempoPendencia" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="TempodePendencia" visible="true" column="tempo_espera" nameColumn="tempo_espera" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tempo em  Espera (Min)">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="infoTipoAberturaChamado" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="infoTipoAberturaChamado" visible="true" column="tipo_chamado" nameColumn="tipo_chamado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tipo de Abertura de Chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoTempoAtendimento" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="InfoTempoAtendimento" visible="true" column="tempo_atendimento" nameColumn="tempo_atendimento" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tempo em Atendimento (Min)">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoLocalidade" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="InfoLocalidade" visible="true" column="ticket_localidade" nameColumn="ticket_localidade" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Localidade do chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoSetor" visible="true" hasAll="true" primaryKey="id">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="InfoSetor" visible="true" column="setor" nameColumn="setor" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="InfoChamadoPesquisa">
+    <Hierarchy name="InfoChamadoNumero" visible="true" hasAll="true" primaryKey="sk_ticket">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="NumeroChamado" visible="true" column="tn" nameColumn="tn" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Numero Chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoChamadoTitulo" visible="true" hasAll="true" primaryKey="sk_ticket">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="titulo" visible="true" column="title" nameColumn="title" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Titulo do Chamado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="InfoChamadoData" visible="true" hasAll="true" primaryKey="sk_ticket">
+      <Table name="dim_ticket">
+      </Table>
+      <Level name="dataAberturaChamado" visible="true" column="data_criacao" nameColumn="data_criacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data Abertura Chamado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="informacaoPesquisa">
+    <Hierarchy name="PesquisaData" visible="true" hasAll="true" primaryKey="num_pesquisa">
+      <Table name="dim_pesquisa">
+      </Table>
+      <Level name="DataVotacao" visible="true" column="Hora_votacao" nameColumn="Hora_votacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Data da Votacao">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="PesquisaNumero" visible="true" hasAll="true" primaryKey="num_pesquisa">
+      <Table name="dim_pesquisa">
+      </Table>
+      <Level name="NumPesquisa" visible="true" column="num_pesquisa" nameColumn="num_pesquisa" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Numero da Pesquisa">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Tempo">
+    <Hierarchy name="AnoData" visible="true" hasAll="true" primaryKey="sk_tempo">
+      <Table name="dim_tempo">
+      </Table>
+      <Level name="Ano" visible="true" column="ano4" nameColumn="ano4" ordinalColumn="ano4" type="Integer" internalType="int" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="Ano">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="MesData" visible="true" hasAll="true" primaryKey="sk_tempo">
+      <Table name="dim_tempo">
+      </Table>
+      <Level name="IntervaloCliente" visible="true" column="intervalo_cliente" nameColumn="intervalo_cliente" ordinalColumn="mes_numero" type="String" internalType="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="Mes do Intervalo">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="DiaData" visible="true" hasAll="true" primaryKey="sk_tempo">
+      <Table name="dim_tempo">
+      </Table>
+      <Level name="Dia" visible="true" column="data_curta" nameColumn="data_curta" ordinalColumn="data_tipo_int" type="String" internalType="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="Dia">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Comentarios da Pesquisa">
+    <Hierarchy name="ComentarioPesquisa" visible="true" hasAll="true" primaryKey="sk_comentario_pesquisa">
+      <Table name="dim_pesquisa_comentarios">
+      </Table>
+      <Level name="Comentarios" visible="true" column="comentario" nameColumn="comentario" ordinalColumn="ticket_id" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Comentarios">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="[Mudan&#231;a] Informa&#231;&#245;es Adicionais">
+    <Hierarchy name="DT Agendamento Inicial" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Agendamento] Data Inicial" visible="true" column="PMDataAgendamentoInicial" nameColumn="PMDataAgendamentoInicial" type="Date" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Agendamento] Data Inicial">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataAgendamentoInicial,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="DT Agendamento Final" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Agendamento] Data Final" visible="true" column="PMDataAgendamentoFinal" nameColumn="PMDataAgendamentoFinal" type="Date" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Agendamento] Data Final">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataAgendamentoFinal,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="DT Implantacao Inicial" visible="true" hasAll="true" primaryKey="ticket_id" caption="Data Implantacao da Mudan&#231;a">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Implementacao] Data Inicial" visible="true" column="PMDataImplementacaoInicial" nameColumn="PMDataImplementacaoInicial" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Implementacao] Data Inicial">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataImplementacaoInicial,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="DT Implantacao Final" visible="true" hasAll="true" primaryKey="ticket_id" caption="Data Implantacao da Mudan&#231;a">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Implementacao] Data Final" visible="true" column="PMDataImplentacaoFinal" nameColumn="PMDataImplentacaoFinal" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Implementacao] Data Final">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataImplentacaoFinal,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Avalia&#231;&#227;o Tecnica RDM" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Avalia&#231;&#227;o] Data Avalia&#231;&#227;o" visible="true" column="PMDataAvaliacao" nameColumn="PMDataAvaliacao" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Avalia&#231;&#227;o] Data Avalia&#231;&#227;o">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataAvaliacao,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Avalia&#231;&#227;o] Avalia&#231;&#227;o Tecnica" visible="true" column="PMAvaliacaoMudanca" nameColumn="PMAvaliacaoMudanca" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Avalia&#231;&#227;o] Avalia&#231;&#227;o Tecnica">
+      </Level>
+      <Level name="[Avalia&#231;&#227;o] Avaliador da RDM" visible="true" column="PMAvaliadorRDM" nameColumn="PMAvaliadorRDM" type="String" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Avalia&#231;&#227;o] Avaliador da RDM">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Autoriza&#231;&#227;o do Org&#227;o" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Autoriza&#231;ao] Data de Autoriza&#231;&#227;o" visible="true" column="PMDataAutorizacao" nameColumn="PMDataAutorizacao" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Autoriza&#231;ao] Data de Autoriza&#231;&#227;o">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataAutorizacao,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Autoriza&#231;ao] Estado da Autoriza&#231;&#227;o" visible="true" column="PMEstadoAutorizacao" nameColumn="PMEstadoAutorizacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Autoriza&#231;ao] Estado da Autoriza&#231;&#227;o">
+      </Level>
+      <Level name="[Autoriza&#231;ao] Autorizador da RDM" visible="true" column="PMAutorizadorCliente" nameColumn="PMAutorizadorCliente" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Autoriza&#231;ao] Autorizador da RDM">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Conclus&#227;o da RDM" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Conclus&#227;o] Estado da Conclus&#227;o da RDM" visible="true" column="PMEstadoConclusaoMudanca" nameColumn="PMEstadoConclusaoMudanca" type="String" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Conclus&#227;o] Estado da Conclus&#227;o da RDM">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="SLA RDM" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Conclus&#227;o] SLA da RDM" visible="true" column="PMSLAMudanca" nameColumn="PMSLAMudanca" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Conclus&#227;o] SLA da RDM">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Justificativa" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Conclus&#227;o] Foi Justificado?" visible="true" column="PMJustificado" nameColumn="PMJustificado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Conclus&#227;o] Foi Justificado?">
+      </Level>
+      <Level name="[Conclus&#227;o] Justificativa da RDM" visible="true" column="PMJustificativaFalha" nameColumn="PMJustificativaFalha" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Conclus&#227;o] Justificativa da RDM">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Apresenta&#231;&#227;o ao CCM" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[CCM] Data de Apresenta&#231;&#227;o da RDM" visible="true" column="PMDataApresentadoCCM" nameColumn="PMDataApresentadoCCM" type="Date" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[CCM] Apresenta&#231;&#227;o da RDM">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PMDataApresentadoCCM,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[CCM] Foi apresentado ao CCM?" visible="true" column="PMApresentadoCCM" nameColumn="PMApresentadoCCM" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[CCM] Foi apresentado ao CCM?">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="[Problema] Informa&#231;&#245;es Adicionais">
+    <Hierarchy name="Aprova&#231;&#227;o do Problema" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Aprova&#231;&#227;o] Data da aprova&#231;&#227;o" visible="true" column="PPDataAutorizacao" nameColumn="PPDataAutorizacao" type="Date" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Aprova&#231;&#227;o] Data da aprova&#231;&#227;o">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PPDataAutorizacao,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Aprova&#231;&#227;o] Estado da Aprova&#231;&#227;o" visible="true" column="PPEstadoAutorizacao" nameColumn="PPEstadoAutorizacao" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Aprova&#231;&#227;o] Estado da Aprova&#231;&#227;o">
+      </Level>
+      <Level name="[Aprova&#231;&#227;o] Aprovador do Problema" visible="true" column="PPAutorizadoPor" nameColumn="PPAutorizadoPor" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Aprova&#231;&#227;o] Autorizado Por:">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Apresenta&#231;&#227;o ao CCM" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[CCM] Data de Apresenta&#231;&#227;o do Problema" visible="true" column="PPDataApresentacaoCCM" nameColumn="PPDataApresentacaoCCM" type="Date" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[CCM] Data de Apresenta&#231;&#227;o do Problema">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PPDataApresentacaoCCM,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[CCM] Foi apresentado ao CCM?" visible="true" column="PPApresentadoCCM" nameColumn="PPApresentadoCCM" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[CCM] Foi apresentado ao CCM?">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="[Req/Incidente] Informa&#231;&#245;es Adicionais">
+    <Hierarchy name="Justificativa do Chamado" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Justificativa] Chamado foi Justificado?" visible="true" column="PRIHouveJustificativa" nameColumn="PRIHouveJustificativa" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Justificativa] Chamado foi Justificado?">
+      </Level>
+      <Level name="[Justificativa] Justificado Por: " visible="true" column="PRIJustificadoPor" nameColumn="PRIJustificadoPor" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Justificado Por:">
+      </Level>
+      <Level name="[Justificativa] Justificativa" visible="true" column="PRIJustificativa" nameColumn="PRIJustificativa" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Justificativa">
+      </Level>
+      <Level name="[Justificativa] Motivo da Justificativa" visible="true" column="PRIMotivoJustificativa" nameColumn="PRIMotivoJustificativa" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Justificativa] Motivo da Justificativa">
+      </Level>
+      <Level name="[Justificativa] Data da Justificativa" visible="true" column="PRIDataJustificativa" nameColumn="PRIDataJustificativa" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Justificativa] Data da Justificativa">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PRIDataJustificativa,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Pesquisa de Satisfa&#231;&#227;o" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Pesquisa] Foi Enviado a Pesquisa?" visible="true" column="PRIEnvioPesquisa" nameColumn="PRIEnvioPesquisa" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Pesquisa] Foi Enviado a Pesquisa?">
+      </Level>
+      <Level name="[Pesquisa] Foi Respondido a Pesquisa? " visible="true" column="PRIPesquisaRespondida" nameColumn="PRIPesquisaRespondida" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Pesquisa] Foi Respondido a Pesquisa?">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Tempos dos Chamados" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Tempos] Hora de Cria&#231;&#227;o Chamado" visible="true" column="PRIHoraCriacaoChamado" nameColumn="PRIHoraCriacaoChamado" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Hora de Cria&#231;&#227;o Chamado">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PRIHoraCriacaoChamado,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Tempos] Hora de Classifica&#231;&#227;o Chamado" visible="true" column="PRIHoraClassificacaoChamado" nameColumn="PRIHoraClassificacaoChamado" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Hora de Classifica&#231;&#227;o Chamado">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PRIHoraClassificacaoChamado,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Tempos] Data Conclus&#227;o Tecnica" visible="true" column="PriHoraConclusaoTecnica" nameColumn="PriHoraConclusaoTecnica" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Data Conclus&#227;o Tecnica">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PriHoraConclusaoTecnica,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Tempos] Data de Vencimento SLA" visible="true" column="PRIHoraSLAChamado" nameColumn="PRIHoraSLAChamado" type="Timestamp" internalType="Object" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Data de Vencimento SLA">
+        <NameExpression>
+          <SQL dialect="mysql">
+            <![CDATA[DATE_FORMAT(PRIHoraSLAChamado,'%d/%m/%Y %H:%i:%S')]]>
+          </SQL>
+        </NameExpression>
+      </Level>
+      <Level name="[Tempos] Resultado SLA de Classifica&#231;&#227;o" visible="true" column="PRISLAClassificacaoChamado" nameColumn="PRISLAClassificacaoChamado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Resultado SLA de Classifica&#231;&#227;o">
+      </Level>
+      <Level name="[Tempos] Resultado SLA de Encerramento" visible="true" column="PRISLAEncerramentoChamado" nameColumn="PRISLAEncerramentoChamado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Resultado SLA de Encerramento">
+      </Level>
+      <Level name="[Tempos] Tempo Total de Atendimento" visible="true" column="PRITempoTotalAtendimento" nameColumn="PRITempoTotalAtendimento" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Tempos] Tempo Total de Atendimento">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Informa&#231;&#245;es de Espera" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_informacoes_adicionais_ticket">
+      </Table>
+      <Level name="[Espera] Chamado Ficou em Espera?" visible="true" column="PRIHouveEspera" nameColumn="PRIHouveEspera" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Espera] Chamado Ficou em Espera?">
+      </Level>
+      <Level name="[Espera] Houve Pendencia de Mudan&#231;a?" visible="true" column="PRIHouvePendenciaDeMudanca" nameColumn="PRIHouvePendenciaDeMudanca" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Espera] Houve Pendencia de Mudan&#231;a">
+      </Level>
+      <Level name="[Espera] Tempo Total de Espera" visible="true" column="PRITempoTotalEspera" nameColumn="PRITempoTotalEspera" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="[Espera] Tempo Total de Espera">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="[IC] Associacao IC">
+    <Hierarchy name="Nome IC Associado " visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_ticket_link_ic">
+      </Table>
+      <Level name="Nome do IC" visible="true" column="IC_nome" nameColumn="IC_nome" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Tipo IC associado" visible="true" hasAll="true" primaryKey="ticket_id">
+      <Table name="dim_ticket_link_ic">
+      </Table>
+      <Level name="Tipo de IC" visible="true" column="IC_Tipo" nameColumn="IC_Tipo" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tipo de IC">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="[Chamado] Associacao Chamado">
+    <Hierarchy name="Tipo Chamado Vinculado" visible="true" hasAll="true" primaryKey="ticket_id_origem">
+      <Table name="dim_ticket_link_ticket">
+      </Table>
+      <Level name="Tipo Chamado Vinculado" visible="true" column="tipo_chamado_vinculado" nameColumn="tipo_chamado_vinculado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Tipo Chamado Vinculado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Numero Chamado vinculado" visible="true" hasAll="true" primaryKey="ticket_id_origem">
+      <Table name="dim_ticket_link_ticket">
+      </Table>
+      <Level name="Numero  Chamado Vinculado" visible="true" column="ticket_number_vinculado" nameColumn="ticket_number_vinculado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Numero  Chamado Vinculado">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Titulo Chamado Vinculado" visible="true" hasAll="true" primaryKey="ticket_id_origem">
+      <Table name="dim_ticket_link_ticket">
+      </Table>
+      <Level name="Titulo Chamado Vinculado" visible="true" column="tipo_chamado_vinculado" nameColumn="titulo_ticket_vinculado" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Titulo Chamado Vinculado">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Chamados - Historicos" caption="Chamados Historico OTRS" visible="true" description="Cubo de chamados Historicos" cache="false" enabled="true">
+    <Table name="fac_chamado">
+    </Table>
+    <DimensionUsage source="UsuariosClientes" name="Usuario Cliente" caption="Usuario Solicitante" visible="true" foreignKey="usuario_solicitante_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstadoChamado" name="Estado Chamado" caption="Estado do Chamado" visible="true" foreignKey="estado_chamado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="ArvoreCatalogoServico" name="Catalogo de Servico" caption="Catalogo de Servico" visible="true" foreignKey="id_servico" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="DataCriacao" caption="Periodo de Cria&#231;&#227;o" visible="true" foreignKey="data_criacao_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="DataEncerramento" caption="Periodo Encerramento" visible="true" foreignKey="data_Encerramento_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="DataAguardandoValidacao" caption="Periodo Aguardando Validacao" visible="true" foreignKey="data_aguardando_validacao_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="DataClassificacao" caption="Periodo Classificacao" visible="true" foreignKey="data_classificacao_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="DataPrazoSLA" caption="Periodo SLA Encerramento" visible="false" foreignKey="data_prazo_sla_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Atendentes" name="Atendente" caption="Atendentes" visible="true" foreignKey="atendente_chamado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="TipoChamado" name="TipoChamado" caption="Tipo de Chamado" visible="true" foreignKey="id_tipo_chamado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="StatusChamadoClassificacao" name="StatusClassificacao" caption="Status de Classifica&#231;&#227;o" visible="true" foreignKey="status_classificacao_chamado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="StatusChamadoEncerramento" name="StatusEncerramento" caption="Status de Encerramento" visible="true" foreignKey="status_encerramento_chamado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Severidade" name="Severidade" caption="Severidade" visible="true" foreignKey="severidade_id_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="InfoChamado" name="Informa&#231;oesChamado" caption="Informa&#231;&#245;es Chamado" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Fila" name="Fila" caption="Fila Atendimento" visible="true" foreignKey="queue_id" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="[Mudan&#231;a] Informa&#231;&#245;es Adicionais" name="[Mudan&#231;a] Informa&#231;&#245;es Adicionais" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="[Problema] Informa&#231;&#245;es Adicionais" name="[Problema] Informa&#231;&#245;es Adicionais" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="[Req/Incidente] Informa&#231;&#245;es Adicionais" name="[Req/Incidente] Informa&#231;&#245;es Adicionais" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="[IC] Associacao IC" name="[IC] Associacao de IC" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="[Chamado] Associacao Chamado" name="[Chamados] Associacao de Chamados" visible="true" foreignKey="id_ticket" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="QuantidadeTicket" column="id_ticket" datatype="Integer" aggregator="distinct-count" caption="Quantidade Chamados" visible="true">
+    </Measure>
+    <Measure name="QuantidadeUSU" column="qtd_USU" datatype="Integer" aggregator="sum" caption="Volumetria US" visible="true">
+    </Measure>
+    <CalculatedMember name="ValorFaturado" caption="Valor Faturado (R$)" description="CALCULA O VALOR FATURADO EM REAIS" formula="[Measures].[QuantidadeUSU]*19.06" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+  <Cube name="Pesquisa - Historico" caption="Pesquisa de Satisfacao  Historica" visible="true" description="Cubo de Pesquisa Historica" cache="false" enabled="true">
+    <Table name="fac_pesquisa">
+    </Table>
+    <DimensionUsage source="UsuariosClientes" name="PesquisaCliente" caption="Usuarios Cliente" visible="true" foreignKey="enviado_para_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Tempo" name="Tempo" caption="Data Vota&#231;&#227;o" visible="true" foreignKey="data_votacao_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Questoes" name="Questoes" caption="Perguntas" visible="true" foreignKey="Quest&#227;o" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="RespostaPesquisa" name="Respostas" caption="Respostas" visible="true" foreignKey="valor_votado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="InfoChamadoPesquisa" name="InformacaoChamado" caption="Informacoes Chamado" visible="true" foreignKey="ticket_id_sk" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="informacaoPesquisa" name="InfoPesquisa" caption="Informacao da pesquisa" visible="true" foreignKey="numero_pesquisa" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Comentarios da Pesquisa" name="Comentarios Pesquisa" visible="true" foreignKey="sk_pesquisa_comentarios" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Atendentes" name="Atendente" caption="Atendentes" visible="true" foreignKey="atendente_chamado" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="QuantidadePesquisa" column="numero_pesquisa" datatype="Integer" aggregator="distinct-count" caption="Quantidade de Pesquisa" visible="true">
+    </Measure>
+    <Measure name="QuantidadeResposta" column="id" datatype="Integer" aggregator="distinct-count" caption="Quantidade de Respostas" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

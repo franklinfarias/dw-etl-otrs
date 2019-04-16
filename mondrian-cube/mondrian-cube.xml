@@ -1,0 +1,168 @@
+<Schema name="OTRS OLAP v6.0" measuresCaption="Medidas">
+  <Cube name="otrs_olap" visible="true" description="Cube Analytics History v6.0" cache="true" enabled="true">
+    <Table name="fc_ticket">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_ticket" highCardinality="false" name="TICKET" caption="Chamado">
+      <Hierarchy name="Ticket" visible="true" hasAll="true" primaryKey="sk_ticket" caption="Chamado">
+        <Table name="dm_ticket">
+        </Table>
+        <Level name="Ticket number" visible="true" column="ticket_number" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Descricao" visible="true" table="dm_ticket" column="title" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Comunnication channel" visible="true" hasAll="true" primaryKey="sk_ticket" caption="Canal de Comunica&#231;&#227;o">
+        <Table name="dm_ticket" alias="">
+        </Table>
+        <Level name="Communication Channel" visible="true" table="dm_ticket" column="communication_channel" nameColumn="communication_channel" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Canal de Comunica&#231;&#227;o">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_type" highCardinality="false" name="TYPE" caption="Tipo do Chamado">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_type">
+        <Table name="dm_type">
+        </Table>
+        <Level name="Tipo" visible="true" table="dm_type" column="name_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_state" highCardinality="false" name="STATE" caption="Situa&#231;&#227;o do Chamado">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_state">
+        <Table name="dm_state">
+        </Table>
+        <Level name="Estado" visible="true" table="dm_state" column="name_state" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_priority" highCardinality="false" name="PRIORITY" caption="Prioridade">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_priority">
+        <Table name="dm_priority">
+        </Table>
+        <Level name="Prioridade" visible="true" table="dm_priority" column="name_priority" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_service" highCardinality="false" name="SERVICE" caption="Servi&#231;o">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_service">
+        <Table name="dm_service">
+        </Table>
+        <Level name="Servico" visible="true" table="dm_service" column="name_service" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Criticidade" visible="true" table="dm_service" column="criticality" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Tipo Catalogo" visible="true" table="dm_service" column="type_catalog" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_sla" highCardinality="false" name="SLA" caption="ANS">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_sla">
+        <Table name="dm_sla">
+        </Table>
+        <Level name="SLA" visible="true" table="dm_sla" column="name_sla" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Calendario" visible="true" table="dm_sla" column="calendar_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="1 Tempo" visible="true" table="dm_sla" column="first_time" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Tempo Atualizacao" visible="true" table="dm_sla" column="update_time" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Tempo Solucao" visible="true" table="dm_sla" column="solution_time" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_customer" highCardinality="false" name="CUSTOMER" caption="Cliente">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_customer">
+        <Table name="dm_customer">
+        </Table>
+        <Level name="Login" visible="true" table="dm_customer" column="login" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Login Cliente">
+        </Level>
+        <Level name="Nome Cliente" visible="true" table="dm_customer" column="name_customer" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Cliente">
+        </Level>
+        <Level name="Email" visible="true" table="dm_customer" column="email" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Email Cliente">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_user_create" highCardinality="false" name="USER CREATE" caption="Usu&#225;rio de Cria&#231;ao">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_user">
+        <Table name="dm_user">
+        </Table>
+        <Level name="Login Usuario Criacao" visible="true" table="dm_user" column="login" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Login Cria&#231;&#227;o">
+        </Level>
+        <Level name="Nome Usuario Criacao " visible="true" table="dm_user" column="sk_user" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Usu&#225;rio de Cria&#231;&#227;o">
+        </Level>
+        <Level name="Email Usuario Criacao" visible="true" table="dm_user" column="sk_user" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Email Cria&#231;&#227;o">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_user_finish" highCardinality="false" name="USER FINISH" caption="Usu&#225;rio de Fechamento">
+      <Hierarchy visible="true" hasAll="true" primaryKey="sk_user">
+        <Table name="dm_user">
+        </Table>
+        <Level name="Login Usuario Fechamento" visible="true" table="dm_user" column="login" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Login Fechamento">
+        </Level>
+        <Level name="Nome Usuario Fechamento" visible="true" table="dm_user" column="name_user" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Usu&#225;rio de Fechamento">
+        </Level>
+        <Level name="Email Usuario Fechamento" visible="true" table="dm_user" column="email" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Email Fechamento">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_dt_opened" highCardinality="false" name="DATE CREATE" caption="Data de Cria&#231;&#227;o">
+      <Hierarchy name="Ano" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time">
+        </Table>
+        <Level name="Ano" visible="true" table="dm_time" column="year" nameColumn="year" ordinalColumn="year" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Ano">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Mes" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Mes" visible="true" table="dm_time" column="month_name" nameColumn="month_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="M&#234;s">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dia" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Dia" visible="true" table="dm_time" column="day" nameColumn="day" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Dia">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dia Semana" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time">
+        </Table>
+        <Level name="Dia Semana" visible="true" table="dm_time" column="dayweek_name" nameColumn="dayweek_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Dia da Semana">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Bimestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time">
+        </Table>
+        <Level name="Bimestre" visible="true" table="dm_time" column="bimonth_name" nameColumn="bimonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Bimestre">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Trimestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Trimestre" visible="true" table="dm_time" column="quarter_name" nameColumn="quarter_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Trimestre">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Semestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Semestre" visible="true" table="dm_time" column="halfmonth_name" nameColumn="halfmonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Semestre">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Qtd chamados" column="id_ticket" datatype="Integer" aggregator="distinct-count" caption="Qtd. Chamados" visible="true">
+    </Measure>
+    <Measure name="Qtd reabertura" column="qt_reopened" datatype="Integer" aggregator="sum" caption="Qtd. Reabertura" visible="true">
+    </Measure>
+    <Measure name="Tempo Aberto" column="time_opened" datatype="Integer" aggregator="sum" caption="Tempo em Aberto" visible="true">
+    </Measure>
+    <Measure name="Tempo Pendente" column="time_pending" datatype="Integer" aggregator="sum" caption="Tempo em Pendente" visible="true">
+    </Measure>
+    <Measure name="Tempo Solucao" column="time_solution" datatype="Integer" aggregator="sum" caption="Tempo de Solu&#231;&#227;o" visible="true">
+    </Measure>
+    <Measure name="Pesquisa Enviada" column="survey_send" datatype="Integer" aggregator="sum" caption="Pesquisa Enviada" visible="true">
+    </Measure>
+    <Measure name="Pesquisa Recebida" column="survey_receive" datatype="Integer" aggregator="sum" caption="Pesquisa Recebida" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

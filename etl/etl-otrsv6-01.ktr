@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>etl-otrsv6-01</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2019/03/31 23:28:17.678</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2019/03/31 23:28:17.678</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>OTRS-DESTINATION</name>
+    <server>172.98.0.13</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>otrsv6_olap</database>
+    <port>3306</port>
+    <username>root</username>
+    <password>Encrypted 2be98afc86aa7f2e48d12bd508cc1f68a</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>OTRS-ORIGIN</name>
+    <server>172.98.0.13</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>otrsv6</database>
+    <port>3306</port>
+    <username>root</username>
+    <password>Encrypted 2be98afc86aa7f2e48d12bd508cc1f68a</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>users</from>
+      <to>dm_user</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>state</from>
+      <to>dm_state</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>type</from>
+      <to>dm_type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>priority</from>
+      <to>dm_priority</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>service</from>
+      <to>dm_service</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sla</from>
+      <to>dm_sla</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>queue</from>
+      <to>dm_queue</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>customer</from>
+      <to>dm_customer</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ticket</from>
+      <to>dm_ticket</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>customer</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_customer, login, concat(first_name, ' ', last_name) as name_customer, email, valid_id as id_valid from customer_user</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>181</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_customer</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_customer</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_customer</name>
+        <lookup>id_customer</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>login</name>
+        <lookup>login</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>name_customer</name>
+        <lookup>name_customer</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>email</name>
+        <lookup>email</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_customer</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>417</xloc>
+      <yloc>180</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_priority</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_priority</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_priority</name>
+        <lookup>id_priority</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_priority</name>
+        <lookup>name_priority</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_priority</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>190</xloc>
+      <yloc>244</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_queue</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_queue</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_queue</name>
+        <lookup>id_queue</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_queue</name>
+        <lookup>name_queue</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>calendar_name</name>
+        <lookup>calendar_name</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>first_time</name>
+        <lookup>first_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>update_time</name>
+        <lookup>update_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>solution_time</name>
+        <lookup>solution_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_queue</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>107</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_service</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_service</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_service</name>
+        <lookup>id_service</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_service</name>
+        <lookup>name_service</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>criticality</name>
+        <lookup>criticality</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>type_catalog</name>
+        <lookup>type_catalog</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_service</name>
+        <rename />
+        <creation_method>tablemax</creation_method>
+        <use_autoinc>N</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>191</xloc>
+      <yloc>315</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_sla</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_sla</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_sla</name>
+        <lookup>id_sla</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_sla</name>
+        <lookup>name_sla</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>calendar_name</name>
+        <lookup>calendar_name</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>first_time</name>
+        <lookup>first_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>update_time</name>
+        <lookup>update_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>solution_time</name>
+        <lookup>solution_time</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>time_incidents</name>
+        <lookup>time_incidents</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>type_catalog</name>
+        <lookup>type_catalog</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_sla</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>415</xloc>
+      <yloc>35</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_state</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_state</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_state</name>
+        <lookup>id_state</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_state</name>
+        <lookup>name_state</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_state</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>190</xloc>
+      <yloc>106</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_ticket</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_ticket</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_ticket</name>
+        <lookup>id_ticket</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>ticket_number</name>
+        <lookup>ticket_number</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>title</name>
+        <lookup>title</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>communication_channel</name>
+        <lookup>communication_channel</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_ticket</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>417</xloc>
+      <yloc>250</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_type</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_type</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_type</name>
+        <lookup>id_type</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>name_type</name>
+        <lookup>name_type</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_type</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>191</xloc>
+      <yloc>175</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>dm_user</name>
+    <type>DimensionLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <schema />
+    <table>dm_user</table>
+    <connection>OTRS-DESTINATION</connection>
+    <commit>100</commit>
+    <update>Y</update>
+    <fields>
+      <key>
+        <name>id_user</name>
+        <lookup>id_user</lookup>
+      </key>
+      <date>
+        <name />
+        <from>date_from</from>
+        <to>date_to</to>
+      </date>
+      <field>
+        <name>login</name>
+        <lookup>login</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>name_user</name>
+        <lookup>name_user</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>email</name>
+        <lookup>email</lookup>
+        <update>Update</update>
+      </field>
+      <field>
+        <name>id_valid</name>
+        <lookup>id_valid</lookup>
+        <update>Update</update>
+      </field>
+      <return>
+        <name>sk_user</name>
+        <rename />
+        <creation_method>autoinc</creation_method>
+        <use_autoinc>Y</use_autoinc>
+        <version>version</version>
+      </return>
+    </fields>
+    <sequence />
+    <min_year>1900</min_year>
+    <max_year>2199</max_year>
+    <cache_size>5000</cache_size>
+    <preload_cache>N</preload_cache>
+    <use_start_date_alternative>Y</use_start_date_alternative>
+    <start_date_alternative>sysdate</start_date_alternative>
+    <start_date_field_name />
+    <useBatch>N</useBatch>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>188</xloc>
+      <yloc>38</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>priority</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_priority, name as name_priority, valid_id as id_valid from ticket_priority</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>85</xloc>
+      <yloc>245</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>queue</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_queue, name as name_queue, calendar_name, 
+first_response_time as first_time, update_time, solution_time, valid_id as id_valid 
+from queue</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>300</xloc>
+      <yloc>106</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>service</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_service, name as name_service, criticality, sp.preferences_value as type_catalog, valid_id as id_valid
+from service s
+join service_preferences sp on s.id = sp.service_id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>84</xloc>
+      <yloc>316</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sla</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select sl.id as id_sla, sl.name as name_sla, sl.calendar_name, 
+sl.first_response_time as first_time, 
+sl.update_time, sl.solution_time, sl.min_time_bet_incidents as time_incidents
+, gc.name as type_catalog, sl.valid_id as id_valid
+from sla sl
+join general_catalog gc on sl.type_id = gc.id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>298</xloc>
+      <yloc>36</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>state</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_state, name as name_state, valid_id as id_valid from ticket_state</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>85</xloc>
+      <yloc>106</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ticket</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select 
+t.id as id_ticket, t.tn as ticket_number, t.title,
+cc.name as communication_channel
+from ticket t
+join (select
+        a.ticket_id as ticket_id,
+        min(a.id) as article_id
+    from article a
+    group by a.ticket_id) fa on t.id = fa.ticket_id
+join article a on fa.article_id = a.id
+join communication_channel cc on a.communication_channel_id = cc.id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>303</xloc>
+      <yloc>250</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>type</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select id as id_type, name as name_type, valid_id as id_valid from ticket_type</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>81</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>users</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>OTRS-ORIGIN</connection>
+    <sql>select 
+u.id as id_user, u.login, concat(u.first_name, ' ', u.last_name) as name_user, up.preferences_value as email, valid_id as id_valid
+from users u
+left join user_preferences up on u.id = up.user_id
+and up.preferences_key = 'UserEmail'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>37</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>
