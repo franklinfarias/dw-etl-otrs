@@ -12,7 +12,7 @@
         </Level>
       </Hierarchy>
       <Hierarchy name="Comunnication channel" visible="true" hasAll="true" primaryKey="sk_ticket" caption="Canal de Comunica&#231;&#227;o">
-        <Table name="dm_ticket" alias="">
+        <Table name="dm_ticket">
         </Table>
         <Level name="Communication Channel" visible="true" table="dm_ticket" column="communication_channel" nameColumn="communication_channel" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Canal de Comunica&#231;&#227;o">
         </Level>
@@ -114,13 +114,13 @@
         </Level>
       </Hierarchy>
       <Hierarchy name="Mes" visible="true" hasAll="true" primaryKey="sk_time">
-        <Table name="dm_time" alias="">
+        <Table name="dm_time">
         </Table>
         <Level name="Mes" visible="true" table="dm_time" column="month_name" nameColumn="month_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="M&#234;s">
         </Level>
       </Hierarchy>
       <Hierarchy name="Dia" visible="true" hasAll="true" primaryKey="sk_time">
-        <Table name="dm_time" alias="">
+        <Table name="dm_time">
         </Table>
         <Level name="Dia" visible="true" table="dm_time" column="day" nameColumn="day" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Dia">
         </Level>
@@ -138,6 +138,50 @@
         </Level>
       </Hierarchy>
       <Hierarchy name="Trimestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time">
+        </Table>
+        <Level name="Trimestre" visible="true" table="dm_time" column="quarter_name" nameColumn="quarter_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Trimestre">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Semestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time">
+        </Table>
+        <Level name="Semestre" visible="true" table="dm_time" column="halfmonth_name" nameColumn="halfmonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Semestre">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="sk_dt_finish" name="DATE FINISH">
+      <Hierarchy name="Ano" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Ano" visible="true" table="dm_time" column="year" nameColumn="year" type="Integer" internalType="int" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Ano">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Mes" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Mes" visible="true" table="dm_time" column="month_name" nameColumn="month_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="M&#234;s">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dia" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Dia" visible="true" table="dm_time" column="day" nameColumn="day" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Dia">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dia Semana" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Dia Semana" visible="true" table="dm_time" column="dayweek_name" nameColumn="dayweek_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Dia da Semana">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Bimestre" visible="true" hasAll="true" primaryKey="sk_time">
+        <Table name="dm_time" alias="">
+        </Table>
+        <Level name="Bimestre" visible="true" table="dm_time" column="bimonth_name" nameColumn="bimonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Bimestre">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Trimestre" visible="true" hasAll="true" primaryKey="sk_time">
         <Table name="dm_time" alias="">
         </Table>
         <Level name="Trimestre" visible="true" table="dm_time" column="quarter_name" nameColumn="quarter_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Trimestre">
@@ -146,7 +190,7 @@
       <Hierarchy name="Semestre" visible="true" hasAll="true" primaryKey="sk_time">
         <Table name="dm_time" alias="">
         </Table>
-        <Level name="Semestre" visible="true" table="dm_time" column="halfmonth_name" nameColumn="halfmonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" caption="Semestre">
+        <Level name="Semestre" visible="true" table="dm_time" column="halfmonth_name" nameColumn="halfmonth_name" type="String" internalType="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
       </Hierarchy>
     </Dimension>
